@@ -1,0 +1,19 @@
+name: Copy Repository Code Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  copy-code:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Copy repository code
+      run: |
+        mkdir -p /home/ubuntu/github-runner
+        cp -R . /home/ubuntu/github-runner
